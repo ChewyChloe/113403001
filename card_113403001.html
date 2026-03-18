@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pei-Jen Lu | 數位名片</title>
+  
+  <!-- 引入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 引入 Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- 引入 Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* 核心基礎設定 */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F5F7; /* 極簡淺灰/米白背景 */
+      margin: 0;
+      -webkit-tap-highlight-color: transparent; 
+    }
+
+    /* -------------------------------------
+       視覺風格：Neumorphism (新擬態/壓印效果)
+       ------------------------------------- */
+    .neu-bg {
+      background: #F5F5F7;
+    }
+    
+    /* 浮雕效果 */
+    .neu-raised {
+      box-shadow: 16px 16px 32px #d1d1d4, 
+                 -16px -16px 32px #ffffff;
+    }
+    
+    /* 凹陷/壓印效果 */
+    .neu-pressed {
+      box-shadow: inset 8px 8px 16px #d1d1d4, 
+                  inset -8px -8px 16px #ffffff;
+    }
+
+    /* 按鈕 Hover 效果 */
+    .neu-btn {
+      box-shadow: 6px 6px 12px #d1d1d4, 
+                 -6px -6px 12px #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .neu-btn:hover {
+      box-shadow: inset 4px 4px 8px #d1d1d4, 
+                  inset -4px -4px 8px #ffffff;
+      transform: scale(0.95);
+      color: #111827;
+    }
+
+    /* -------------------------------------
+       核心互動：3D 翻轉相關設定
+       ------------------------------------- */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-transition {
+      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); 
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    .no-select {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* 大頭照微互動 */
+    .avatar-transition {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-6 sm:p-12">
+
+  <!-- 3D 場景容器 -->
+  <div class="perspective-1000 w-full max-w-[320px] aspect-[3/4] sm:aspect-[4/5] cursor-pointer no-select group" id="card-scene">
+    
+    <!-- 名片本體 -->
+    <div class="relative w-full h-full transform-style-3d flip-transition rounded-[2rem] neu-bg neu-raised" id="card">
+
+      <!-- ==================== 名片正面 ==================== -->
+      <div class="absolute inset-0 w-full h-full backface-hidden rounded-[2rem] flex flex-col items-center justify-center p-8 text-gray-800">
+        
+        <!-- 頭像區塊 (應用壓印效果) -->
+        <!-- 這裡針對你的 3D 角色圖片做了位置微調，讓它更像立體公仔 -->
+        <div class="w-36 h-36 rounded-full neu-pressed mb-8 relative flex items-center justify-center overflow-hidden bg-white/30" id="avatar-container">
+          <img 
+            id="avatar" 
+            src="IMG_5382.jpg" 
+            alt="Pei-Jen Lu 3D Avatar" 
+            onerror="this.src='https://api.dicebear.com/7.x/lorelei/svg?seed=Nana&hair=straight02&hairColor=1a1a1a&skinColor=f2d3b1&mouth=smile'"
+            class="w-full h-full object-cover avatar-transition drop-shadow-xl"
+            style="object-position: top center; transform: scale(1.1) translateY(5px);"
+          >
+        </div>
+
+        <!-- 文字資訊 -->
+        <h1 class="text-2xl sm:text-3xl font-semibold tracking-widest mb-1 text-gray-900">呂沛珍</h1>
+        <h2 class="text-xs sm:text-sm font-medium tracking-[0.2em] text-gray-400 mb-6 uppercase">Pei-Jen Lu</h2>
+
+        <!-- 極簡分隔線 -->
+        <div class="w-12 h-1 bg-gray-300/60 rounded-full mb-6"></div>
+
+        <div class="text-center">
+          <p class="text-sm sm:text-base font-medium text-gray-600 tracking-wide">
+            國立中央大學
+          </p>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1.5 tracking-wider">
+            資訊管理學系
+          </p>
+        </div>
+      </div>
+
+      <!-- ==================== 名片背面 ==================== -->
+      <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-[2rem] flex flex-col items-center justify-between p-8 text-gray-800">
+        
+        <div class="w-full flex-1 flex flex-col items-center justify-center mt-4">
+           <!-- 自我介紹 -->
+           <h3 class="text-lg font-semibold tracking-widest text-gray-900 mb-4">ABOUT ME</h3>
+           <p class="text-sm text-center text-gray-500 leading-relaxed mb-10 px-2 font-light">
+             中央大學資訊管理系<br><br>
+             仍在精進Coding能力
+           </p>
+
+           <!-- 社群連結按鈕 -->
+           <div class="flex gap-5">
+             <a href="https://www.instagram.com/" target="_blank" class="w-12 h-12 rounded-full neu-bg neu-btn flex items-center justify-center text-gray-500 social-link">
+               <i data-lucide="instagram" class="w-5 h-5"></i>
+             </a>
+             <a href="https://github.com/" target="_blank" class="w-12 h-12 rounded-full neu-bg neu-btn flex items-center justify-center text-gray-500 social-link">
+               <i data-lucide="github" class="w-5 h-5"></i>
+             </a>
+             <a href="https://workspace.google.com/intl/zh-TW/gmail/" target="_blank" class="w-12 h-12 rounded-full neu-bg neu-btn flex items-center justify-center text-gray-500 social-link">
+               <i data-lucide="mail" class="w-5 h-5"></i>
+             </a>
+           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 獨立在名片下方的互動提示 -->
+  <div class="mt-8 text-xs text-gray-400 flex items-center gap-1.5 opacity-60 animate-bounce">
+    <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+    <span class="tracking-widest uppercase" id="flip-hint">Click to Flip</span>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const cardScene = document.getElementById('card-scene');
+    const card = document.getElementById('card');
+    const avatarContainer = document.getElementById('avatar-container');
+    const avatar = document.getElementById('avatar');
+    const socialLinks = document.querySelectorAll('.social-link');
+    const flipHint = document.getElementById('flip-hint');
+
+    let isFlipped = false;
+    
+    // 處理翻牌
+    cardScene.addEventListener('click', () => {
+      isFlipped = !isFlipped;
+      card.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+      
+      if (isFlipped) {
+        flipHint.textContent = 'Flip Back';
+        flipHint.previousElementSibling.setAttribute('data-lucide', 'rotate-ccw');
+      } else {
+        flipHint.textContent = 'Click to Flip';
+        flipHint.previousElementSibling.setAttribute('data-lucide', 'mouse-pointer-click');
+      }
+      lucide.createIcons();
+    });
+
+    socialLinks.forEach(link => {
+      link.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    // 頭像微互動：利用 CSS Filter 增加「光澤感」
+    avatarContainer.addEventListener('mouseenter', () => {
+      if(isFlipped) return; 
+      avatar.style.transform = 'scale(1.2) translateY(0px) rotate(2deg)';
+      avatar.style.filter = 'brightness(1.1) drop-shadow(0 10px 15px rgba(0,0,0,0.2))'; 
+    });
+
+    avatarContainer.addEventListener('mouseleave', () => {
+      avatar.style.transform = 'scale(1.1) translateY(5px) rotate(0deg)';
+      avatar.style.filter = 'none';
+    });
+  </script>
+</body>
+</html>
