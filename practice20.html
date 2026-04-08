@@ -1,102 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed Position and Table Example</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            margin: 0;
-            padding: 50px;
+            padding-top: 50px;
         }
 
-        /* Container to mimic the white box in the screenshot */
-        .container {
+        .white-panel {
             background-color: white;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            min-height: 200px;
-            width: 80%;
-            margin: auto;
-            position: relative;
+            width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
         }
 
-        /* Table Styling */
         table {
             border-collapse: collapse;
-            width: 300px;
+            width: 250px;
         }
-
-        table, th, td {
+        th, td {
             border: 1px solid black;
-        }
-
-        th {
-            background-color: #666666;
-            color: white;
-            padding: 10px;
+            padding: 8px;
             text-align: left;
         }
+        th { background-color: #777; color: white; }
+        tr:nth-child(even) { background-color: yellow; }
 
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        /* Alternating background colors for rows */
-        tr:nth-child(even) {
-            background-color: yellow;
-        }
-
-        tr:nth-child(odd):not(:first-child) {
-            background-color: white;
-        }
-
-        /* Fixed Div Styling */
-        .fixed-box {
-            position: fixed;
+        .green-box {
+            position: absolute;
             top: 20px;
             right: 20px;
-            width: 150px;
+            width: 140px;
+            border: 2px solid #7eb621;
             padding: 10px;
-            border: 3px solid #6B8E23; /* Olive/Green border */
-            background-color: white;
-            font-weight: normal;
-            line-height: 1.2;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="white-panel">
         <table>
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-            </tbody>
+            <tr><th>Firstname</th><th>Lastname</th></tr>
+            <tr><td>1</td><td>1</td></tr>
+            <tr><td>2</td><td>2</td></tr>
+            <tr><td>3</td><td>3</td></tr>
         </table>
 
-        <div class="fixed-box">
-            This div element has position: fixed;
-        </div>
+        <div class="green-box">
+            This div element has position: fixed; 
+            </div>
     </div>
 
 </body>
