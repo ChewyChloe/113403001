@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Layout Practice</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #7ab4f6;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    .green-box,
+    .blue-box,
+    .gray-box {
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    /* Header */
+    .headerBox .green-box {
+      background-color: #b9d561;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+
+    /* Middle */
+    .middleBox {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .blue-box {
+      background-color: #6abecf;
+      height: 200px;
+    }
+
+    @media screen and (min-width: 480px) {
+      .middleBox {
+        flex-direction: row;
+      }
+
+      .blue-box {
+        flex: 1;
+      }
+    }
+
+    /* Bottom */
+    .bottomBox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .gray-box {
+      background-color: #e8eef0;
+      height: 200px;
+      flex: 0 0 calc(50% - 5px);
+    }
+
+    @media screen and (min-width: 480px) {
+      .bottomBox {
+        flex-wrap: nowrap;
+      }
+
+      .gray-box {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="headerBox">
+      <div class="green-box"></div>
+    </div>
+
+    <div class="middleBox">
+      <div class="blue-box"></div>
+      <div class="blue-box"></div>
+      <div class="blue-box"></div>
+    </div>
+
+    <div class="bottomBox">
+      <div class="gray-box"></div>
+      <div class="gray-box"></div>
+      <div class="gray-box"></div>
+      <div class="gray-box"></div>
+    </div>
+
+  </div>
+</body>
+</html>
