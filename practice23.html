@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HW23</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+  }
+
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 496px;
+    margin: 0 auto;
+  }
+
+  /* top bar */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F0F0;
+    padding: 5px 0px;
+  }
+
+  .top-bar p {
+    padding-left: 15px;
+  }
+
+  .preview {
+    font-size: 13px;
+  }
+
+  /* card */
+  .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .image-container {
+    text-align: center;
+  }
+
+  .image-container img {
+    max-width: 450px;
+    min-height: 240px;
+    padding-right: 26px;
+    padding-left: 20px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* button */
+  .custom-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 18px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transform: translateX(-22px);
+    transition: 0.4s;
+  }
+
+  .custom-button:hover {
+    border: 2px solid #008CBA;
+  }
+
+  /* info */
+  .info {
+    display: none;
+    margin-top: 10px;
+    margin-right: 26px;
+    margin-left: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="top-bar">
+    <p class="preview">預覽</p>
+    <button class="custom-button" onclick="toggleInfo()">查看資訊</button>
+  </div>
+
+  <div class="card">
+
+    <div class="image-container">
+      <img src="https://raw.githubusercontent.com/ChewyChloe/113403001/main/practice23_image.png">
+    </div>
+
+    <div class="info" id="info">
+      <p>除改日期：2017/10/12</p>
+      <p>WM：JPG</p>
+      <p>大小：456.97KB</p>
+      <p>路徑：\\designcenter.qnap.com.tw\\DesignCenter\\PM.RD</p>
+      <p>請進入\\WEB\\Stations\\A_Image2PDP2\\sample</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleInfo() {
+  const info = document.getElementById("info");
+  if (info.style.display === "block") {
+    info.style.display = "none";
+  } else {
+    info.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
