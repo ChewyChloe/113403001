@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 35 - Object Manipulation</title>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        var Person = {
+            firstName: "Tony",
+            lastName: "Lee",
+            age: 50,
+            eyecolor: "blue",
+        };
+
+        let display = document.getElementById("output");
+
+        let initialProps = Object.keys(Person).join(", ");
+        display.innerHTML += `<p>Initial properties: ${initialProps}</p>`;
+
+        display.innerHTML += `<p>Initial object: ${JSON.stringify(Person)}</p>`;
+
+        delete Person.age;
+        display.innerHTML += `<p>After deleting age: ${Object.keys(Person).join(", ")}</p>`;
+
+        display.innerHTML += `<p>Object after deleting age: ${JSON.stringify(Person)}</p>`;
+    </script>
+</body>
+</html>
